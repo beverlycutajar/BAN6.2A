@@ -17,10 +17,14 @@ namespace PresentationApp.Controllers
         [HttpPost]
         public ActionResult Contact (string email, string query)
         {
-
+            if(string.IsNullOrEmpty(query) || string.IsNullOrEmpty(email))
+            {
+                ViewData["warning"] = "Kindly fill all the fields";
+            }
+            else
             ViewData["feedback"] = "Thanks for your query, we will be with you shortly";
 
-            ViewData["warning"] = "Kindly fill all the fields";
+            
             
             return View();
         }

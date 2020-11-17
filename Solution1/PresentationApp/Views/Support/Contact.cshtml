@@ -26,6 +26,14 @@
                 @ViewData["feedback"];
             </div>
         }
+
+        @if (ViewData["warning"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+
+                @ViewData["warning"];
+            </div>
+        }
     </div>
 </form>
 
