@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<h1>Kindly fill in the form</h1>
+
+<form method="post" action="/Support/Contact">
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="query"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-dark">Submit</button>
+
+    <div style="margin-top:5px;">
+        @if (ViewData["feedback"] != null)
+        {
+            <div class="alert alert-primary" role="alert">
+
+                @ViewData["feedback"];
+            </div>
+        }
+    </div>
+</form>
+
