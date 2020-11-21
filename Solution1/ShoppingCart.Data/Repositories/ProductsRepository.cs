@@ -10,30 +10,36 @@ namespace ShoppingCart.Data.Repositories
 {
     public class ProductsRepository : IProductRepository
     {
-        ShoppingCartDbContext context;
-        public ProductsRepository(ShoppingCartDbContext _context)
+        ShoppingCartDbContext _context;
+        public ProductsRepository(ShoppingCartDbContext context)
         {
             _context = context;
         }
         public Guid AddProduct(Product P)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(P);
+            _context.SaveChanges();
+
+            return P.Id;
         }
 
-        public void DeleteProduct(Product P)
+        public void DeleteProduct(Guid id)
         {
-            throw new NotImplementedException();
+            Product p = GetProduct(id);
+            _context.Products.Remove(p);
+            _context.SaveChanges();
         }
+
+       
 
         public Product GetProduct(Guid id)
         {
-            throw new NotImplementedException();
+            return _context.Products.SingleOrDefault(x=>x.Id == id);
         }
 
         public IQueryable<Product> GetProducts()
         {
-            
-            throw new NotImplementedException();
+            return _context.Products;
         }
     }
 }
