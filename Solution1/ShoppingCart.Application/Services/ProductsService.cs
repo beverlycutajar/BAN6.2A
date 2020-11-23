@@ -45,12 +45,26 @@ namespace ShoppingCart.Application.Services
                            Name = p.Name,
                            Price = p.Price,
                            ImageURL = p.ImageURL,
-                           //Category = new GateoryViewModel() { Id = p.Category.Id, Name = p.Category.Name }
+                           Category = new GateoryViewModel() { Id = p.Category.Id, Name = p.Category.Name }
 
                        };
             return list;
         }
 
-        
+        void IProductsServiceApp.AddProduct(ProductViewModel model)
+        {
+            Product p = new Product()
+            {
+                Name = model.Name,
+                Description = model.Description,
+                ImageURL = model.ImageURL,
+                Price = model.Price,
+                Stock = model.Stock,
+                CategoryId = model.Category.Id
+
+
+            };
+            _productsRepo.AddProduct(p);
+        }
     }
 }

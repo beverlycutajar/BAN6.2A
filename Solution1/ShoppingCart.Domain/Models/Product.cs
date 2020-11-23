@@ -22,9 +22,13 @@ namespace ShoppingCart.Domain.Models
         public int Stock { get; set; }
 
         [Required]
-        public Category Category { get; set; }
-
-      public string ImageURL { get; set; }
-
+        public virtual CategoryViewModel Category { get; set; }
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public string ImageURL { get; set; }
     }
+
+    
+
+    
 }

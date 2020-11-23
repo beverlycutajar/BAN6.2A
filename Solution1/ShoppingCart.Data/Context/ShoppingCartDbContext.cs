@@ -15,7 +15,7 @@ namespace ShoppingCart.Data.Context
         }
 
         public DbSet<Product> Products {get;set;}
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryViewModel> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,6 +24,11 @@ namespace ShoppingCart.Data.Context
             modelBuilder.Entity<Product>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
 
 
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
         }
     }
 }

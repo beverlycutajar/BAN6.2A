@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.Application.Interfaces;
+using ShoppingCart.Application.ViewModels;
 
 namespace PresentationApp.Controllers
 {
@@ -25,6 +26,30 @@ namespace PresentationApp.Controllers
             return View(_prodService.GetProduct(id));
 
            
+        }
+
+        //----------------------We need 2 mothods to add an item---------------------------------------------------
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Create (ProductViewModel data)
+        {
+            try
+            {
+                _prodService.AddProduct(data);
+                ViewData["feedback"] = "Product Added";
+                ModelState.Clear();
+            }
+            catch(Exception ex) {
+                ViewData["Warning"] = "Product was not Added";
+            }
+            return View();
         }
     }
 }
