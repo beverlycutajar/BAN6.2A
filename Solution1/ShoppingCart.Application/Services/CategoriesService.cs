@@ -5,7 +5,7 @@ using ShoppingCart.Domain.Interfaces;
 using ShoppingCart.Application.ViewModels;
 using ShoppingCart.Application.Interfaces;
 using System.Linq;
-using ShoppingCart.Domain.Models;
+
 
 namespace ShoppingCart.Application.Services
 {
@@ -18,15 +18,17 @@ namespace ShoppingCart.Application.Services
             _categoryRepo = categoriesRepo;
         }
 
-        public IQueryable<CategoryViewModel> GetCategories()
+        public IQueryable<GateoryViewModel> GetCategories()
         {
             var list = from x in _categoryRepo.GetCategories()
-                       select new CategoryViewModel()
+                       select new GateoryViewModel()
                        {
                            Id = x.Id,
                            Name = x.Name
                        };
             return list;
         }
+
+      
     }
 }

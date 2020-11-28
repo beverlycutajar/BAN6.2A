@@ -8,6 +8,6 @@ namespace ShoppingCart.Domain.Interfaces
 {
     public interface ICategoryRepository
     {
-        IQueryable<CategoryViewModel> GetCategories();
+        IQueryable<Category> GetCategories();
     }
 }

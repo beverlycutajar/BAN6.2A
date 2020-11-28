@@ -16,9 +16,10 @@ namespace ShoppingCart.Data.Repositories
             _context = context;
         }
 
-        public IQueryable<CategoryViewModel> GetCategories()
+        public IQueryable<Category> GetCategories()
         {
-            throw new NotImplementedException();
+            return _context.Categories;
         }
-    }
+
+        }
 }
